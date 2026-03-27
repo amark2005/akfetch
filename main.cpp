@@ -116,11 +116,11 @@ static void get_ram(char *buf, size_t len)
     snprintf(buf, len, "%lu MiB / %lu MiB", used, total);
 }
 
-static void get_gpu(char *buf, size_t len)
-{
-    if (!run_cmd("lspci 2>/dev/null | grep -m1 -iE 'VGA|3D|Display' | sed 's/.*: //'", buf, len))
-        strncpy(buf, "Unknown GPU", len - 1);
-}
+// static void get_gpu(char *buf, size_t len)
+// {
+//     if (!run_cmd("lspci 2>/dev/null | grep -m1 -iE 'VGA|3D|Display' | sed 's/.*: //'", buf, len))
+//         strncpy(buf, "Unknown GPU", len - 1);
+// }
 
 static void get_battery(char *buf, size_t len)
 {
@@ -156,8 +156,8 @@ int main(void)
     get_shell(shell, sizeof shell);
     get_cpu(cpu, sizeof cpu);
     get_ram(ram, sizeof ram);
-    get_gpu(gpu, sizeof gpu);
-    get_battery(battery, sizeof battery);
+    //get_gpu(gpu, sizeof gpu);   commenting these lines to gain 81 hundrendth of a second
+   // get_battery(battery, sizeof battery);
 
     printf("\t" "%s" "@" "%s" "\n", user, host);
     printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -168,8 +168,8 @@ int main(void)
     printf( "Shell"   ":    %s\n", shell);
     printf( "CPU"     ":      %s\n", cpu);
     printf( "RAM"     ":      %s\n", ram);
-    printf( "GPU"     ":      %s\n", gpu);
-    printf( "Battery" ":  %s\n", battery);
+    //printf( "GPU"     ":      %s\n", gpu);  
+   // printf( "Battery" ":  %s\n", battery);
 
     return 0;
 }
