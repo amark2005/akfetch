@@ -14,8 +14,8 @@ Most fetch tools like fastfetch, neofetch are too bloated and displays excessive
 ---
 ## Performance
 `fastfetch` --> `0.512s` <br>
-`akfetch` --> ~~0.093s~~ `0.006s`
-
+`akfetch` --> ~~0.093s~~ ~~0.006s~~ `0.0018s` <br>
+![alt text](hyperfine.png)
 `Note: it may not be a big difference here but writting a production ready code anytime is the GOAL here`
 
 
@@ -33,7 +33,7 @@ Most fetch tools like fastfetch, neofetch are too bloated and displays excessive
 ---
 ## Build
 ```bash
-g++ -O3 -march=native -flto -pipe -fno-exceptions -fno-rtti -s main.cpp -o akfetch
+g++ -O3 -march=native --static -flto -pipe -fno-exceptions -fno-rtti -s main.cpp -o akfetch
 ```
 **Run**
 ```bash
